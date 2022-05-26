@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/journalism-spectrum/static/css/main.7ca87d14.css",
+    "main.css": "/journalism-spectrum/static/css/main.8cea0962.css",
     "main.js": "/journalism-spectrum/static/js/main.c9b8d06d.js",
     "index.html": "/journalism-spectrum/index.html",
-    "main.7ca87d14.css.map": "/journalism-spectrum/static/css/main.7ca87d14.css.map",
+    "main.8cea0962.css.map": "/journalism-spectrum/static/css/main.8cea0962.css.map",
     "main.c9b8d06d.js.map": "/journalism-spectrum/static/js/main.c9b8d06d.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ca87d14.css",
+    "static/css/main.8cea0962.css",
     "static/js/main.c9b8d06d.js"
   ]
 }
