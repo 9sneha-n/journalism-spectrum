@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/journalism-spectrum/static/css/main.5047b2af.css",
+    "main.js": "/journalism-spectrum/static/js/main.130c8b2e.js",
+    "index.html": "/journalism-spectrum/index.html",
+    "main.5047b2af.css.map": "/journalism-spectrum/static/css/main.5047b2af.css.map",
+    "main.130c8b2e.js.map": "/journalism-spectrum/static/js/main.130c8b2e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5047b2af.css",
+    "static/js/main.130c8b2e.js"
+  ]
+}
