@@ -1,0 +1,12 @@
+
+.JournalistListDiv {
+    display: flex;
+    overflow-x: auto;
+
+}
+
+.description {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(35, 31, 32);
+    height: 10px;
+}
