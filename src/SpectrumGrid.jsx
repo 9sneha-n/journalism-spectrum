@@ -18,12 +18,9 @@ export const Grid = class Grid extends React.Component {
     makeTitleHidden = () => {
         // this.setState({ gridTitleVisibility: 'none' });
     }
-
     onJournalistDraggedOver = (evt) => {
-        console.log("Dragged OVer");
         evt.preventDefault();
     }
-
     //TO DO : get from backend;
     getJournaData = (i) => {
         switch(i) {
@@ -43,19 +40,18 @@ export const Grid = class Grid extends React.Component {
         let  journo = this.getJournaData(id);
         this.setState({journalists : [...this.state.journalists, journo]})
         console.log(journo);
-        // this.props.JournalistDropped(id);
+        this.props.JournalistDroppedInGrid(id);
     }
 
     render() {
         return (
-            <div className={this.props.value} 
+            <div className={this.props.value + ' Grid' } 
             onMouseEnter={this.makeTitleVisible} 
-            onMouseLeave={this.makeTitleHidden} 
+            onMouseLeave={this.makeTitleHidden}
             onDragOver={(e) => this.onJournalistDraggedOver(e)} 
             onDrop={(e) => this.onJournalistDropped(e, "complete")}>
                 <p
                     style={{ display: this.state.gridTitleVisibility }}>
-                    
                     {this.props.title}
                 </p>
                 <div className='JournoCluster'>
@@ -72,62 +68,70 @@ export const Grid = class Grid extends React.Component {
 }
 
 export default class SpectrumGrid extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <div className='SpectrumGrid'>
                 <div className="Totalitarian Row">
                     <label className='yAxisLabel'>Totalitarian</label>
-                    <Grid value="Communist Grid" title="Marxist Leninism" JournalistDropped={this.props.JournalistDropped} />
-                    <Grid value="Socialist Grid" title="Juche" />
-                    <Grid value="Welfarist Grid" title="Bismarkism" />
-                    <Grid value="Regulationist Grid" title="Fascism" />
-                    <Grid value="Capitalist Grid" title="Absolute Monarchism" />
-                    <Grid value="LaissezFaire Grid" title="National Capitalism" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} title="Marxist Leninism" JournalistDropped={this.props.JournalistDropped} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} title="Juche" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} value="Welfarist" title="Bismarkism" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} title="Fascism" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} title="Absolute Monarchism" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} title="National Capitalism" />
                 </div>
+
                 <div className="Authoritarian Row">
                     <label className='yAxisLabel'>Authoritarian</label>
-                    <Grid value="Communist Grid" />
-                    <Grid value="Socialist Grid" />
-                    <Grid value="Welfarist Grid" />
-                    <Grid value="Regulationist Grid" />
-                    <Grid value="Capitalist Grid" />
-                    <Grid value="LaissezFaire Grid" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} value="Welfarist" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
                 </div>
+
                 <div className="Statist Row">
                     <label className='yAxisLabel'>Statist</label>
-                    <Grid value="Communist Grid" />
-                    <Grid value="Socialist Grid" />
-                    <Grid value="Welfarist Grid" />
-                    <Grid value="Regulationist Grid" />
-                    <Grid value="Capitalist Grid" />
-                    <Grid value="LaissezFaire Grid" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} value="Welfarist" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
                 </div>
+
                 <div className="Liberalism Row">
                     <label className='yAxisLabel'>Liberalism</label>
-                    <Grid value="Communist Grid" />
-                    <Grid value="Socialist Grid" />
-                    <Grid value="Welfarist Grid" />
-                    <Grid value="Regulationist Grid" />
-                    <Grid value="Capitalist Grid" />
-                    <Grid value="LaissezFaire Grid" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)}  value="Welfarist"/>
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
                 </div>
+
                 <div className="Libertarianism Row">
                     <label className='yAxisLabel'>Libertarianism</label>
-                    <Grid value="Communist Grid" />
-                    <Grid value="Socialist Grid" />
-                    <Grid value="Welfarist Grid" />
-                    <Grid value="Regulationist Grid" />
-                    <Grid value="Capitalist Grid" />
-                    <Grid value="LaissezFaire Grid" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} value="Welfarist" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
                 </div>
+
                 <div className="Anarchism Row">
                     <label className='yAxisLabel'>Anarchism</label>
-                    <Grid value="Communist Grid" />
-                    <Grid value="Socialist Grid" />
-                    <Grid value="Welfarist Grid" />
-                    <Grid value="Regulationist Grid" />
-                    <Grid value="Capitalist Grid" />
-                    <Grid value="LaissezFaire Grid" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} value="Welfarist Grid" />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
+                    <Grid JournalistDroppedInGrid={(droppedJourno) => this.props.JournalistDroppedInSpectrumGrid(droppedJourno)} />
                 </div>
 
                 <div className=" Row">
