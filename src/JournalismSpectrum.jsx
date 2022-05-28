@@ -29,7 +29,7 @@ export default class JournalismSpectrum extends React.Component {
                     <h2 className='headline'>Journalism Spectrum</h2>
                 </div>
                 <JournalistList journalists={this.state.journalists} />
-                <SpectrumGrid   JournalistDroppedInSpectrumGrid =  {(placedJournalist) => this.JournalistDropped(placedJournalist)}  />
+                <SpectrumGrid JournoDropped =  {(placedJournalist) => this.JournalistDropped(placedJournalist)}  />
                 <div className='SubmitBar'>
                     <button className='SubmitButton'>Submit</button>
                 </div>
