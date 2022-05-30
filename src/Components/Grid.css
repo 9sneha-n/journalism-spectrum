@@ -1,18 +1,6 @@
-.SpectrumGrid {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    margin: 5px;
-}
-
-.Row {
-    display: flex;
-    flex-direction: row;
-    flex: 1 0 0;
-}
-
 .Grid {
     border: 1px solid black;
+    box-sizing: border-box;
     flex: 1 0 0;
     text-align: center;
     overflow: hidden;
@@ -21,6 +9,7 @@
 
 .JournoCluster {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:wrap;
     text-overflow: ellipsis;
+    /* overflow: auto; */
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import JournalistList from './JournalistList';
-import SpectrumGrid from './SpectrumGrid';
 import './JournalismSpectrum.css';
+import Spectrum from './Spectrum';
 export default class JournalismSpectrum extends React.Component {
     constructor(props) {
         super(props);
@@ -19,7 +19,7 @@ export default class JournalismSpectrum extends React.Component {
 
     JournalistDropped = (droppedJourno) => {
         this.setState({journalists: this.state.journalists.filter(function(journo) { 
-            return journo.id.toString() !== droppedJourno
+            return journo.id !== droppedJourno.id
         })});
     }
     render() {
@@ -29,7 +29,7 @@ export default class JournalismSpectrum extends React.Component {
                     <h2 className='headline'>Journalism Spectrum</h2>
                 </div>
                 <JournalistList journalists={this.state.journalists} />
-                <SpectrumGrid JournoDropped =  {(placedJournalist) => this.JournalistDropped(placedJournalist)}  />
+                <Spectrum JournoDropped =  {(placedJournalist) => this.JournalistDropped(placedJournalist)}  />
                 <div className='SubmitBar'>
                     <button className='SubmitButton'>Submit</button>
                 </div>
