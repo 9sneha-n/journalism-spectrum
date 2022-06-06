@@ -13,6 +13,17 @@
     margin: 10px;
     align-self: flex-end;
     float: right;
+    min-height: 30px;
+    font-size: 16px;
+    padding: 5px 15px;
+    border-radius: 3px;
+    border: 1px solid red;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    background: red;
+    color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 .headline {

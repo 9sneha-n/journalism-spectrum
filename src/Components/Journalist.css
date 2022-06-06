@@ -1,8 +1,21 @@
 .JournalistDiv {
-    margin: 10px;
+    display: flex;
+    overflow-x: auto;
+    align-items: center;
+    margin: 5px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 1px 1px 1px rgb(128 128 128);
+    align-items: center;
+    max-width: 100px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600 ;
+    user-select: none;
+    min-width: 100px;
+    padding: 5px;
 }
+
 .JournalistImage {
     width: 70px;
     height: 70px;

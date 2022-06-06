@@ -1,35 +1,66 @@
 import React from 'react';
-import JournalistList from './JournalistList';
+import ImageDropdown from './ImageDropdown';
 import './JournalismSpectrum.css';
 import Spectrum from './Spectrum';
-export default class JournalismSpectrum extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            // TO DO : Fetch from server
-            journalists :  [
-                { id: 1, imgSrc: "https://9sneha-n.github.io/journalism-spectrum-resc/journalists/J1.jpg", name: "Manisha Pande" },
-                { id: 2, imgSrc: "https://9sneha-n.github.io/journalism-spectrum-resc/journalists/J2.jpg", name: "Mehraj" },
-                { id: 3, imgSrc: "https://9sneha-n.github.io/journalism-spectrum-resc/journalists/J3.jpg", name: "Abhinandan Sekhri" },
-                { id: 4, imgSrc: "https://9sneha-n.github.io/journalism-spectrum-resc/journalists/J4.jpg", name: "Jayashree Arunachalam" },
-                { id: 5, imgSrc: "https://9sneha-n.github.io/journalism-spectrum-resc/journalists/J5.jpg", name: "Raman Kirpal" },
-            ],
-        };
-    }
+import { useState, useEffect } from 'react';
 
-    JournalistDropped = (droppedJourno) => {
-        this.setState({journalists: this.state.journalists.filter(function(journo) { 
+
+export default function JournalismSpectrum() {
+    const [journalists, setJournalists] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        const loadJournos = () => {
+            fetch('https://9sneha-n.github.io/journalism-spectrum-resc/journalistList.json', { method: 'GET' })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json()
+                    }
+                    throw new Error('Something went wrong, Please try again later');
+                })
+                .then(
+                    (result) => {
+                        setIsLoaded(true);
+                        setJournalists(result.journalists);
+                    },
+                    (error) => {
+                        setIsLoaded(true);
+                        //TO DO : Error handling, track the error to tracking/logging backend
+                        console.log("An error occured. " + error.message);
+                        error.message = 'Something went wrong, Please try again later';
+                        setError(error);
+                    }
+                ).catch((exception) => {
+                    //TO DO : Error handling, track the error to tracking/logging backend
+                    console.log("An exception occured. " + exception);
+                    setIsLoaded(true);
+                    setError(exception);
+                })
+        }
+        loadJournos();
+    }, []);
+    const journalistDropped = (droppedJourno) => {
+        setJournalists(journalists.filter(function (journo) {
             return journo.id !== droppedJourno.id
-        })});
+        }));
     }
-    render() {
+    if (!isLoaded) {
+        //TO DO : Replace with loading.gif
+        return <div>Loading...</div>;
+    }
+    else if (error) {
+        return <div>Error: {error.message}</div>;
+    } else {
         return (
             <div className="SpectrumBoard">
                 <div className='h50'>
                     <h2 className='headline'>Journalism Spectrum</h2>
                 </div>
-                <JournalistList journalists={this.state.journalists} />
-                <Spectrum JournoDropped =  {(placedJournalist) => this.JournalistDropped(placedJournalist)}  />
+                <>
+                    <p className='description'>Drag and drop each journalist within the spectrum :  </p>
+                    <ImageDropdown options={journalists} />
+                </>
+                <Spectrum JournoDropped={(placedJournalist) => journalistDropped(placedJournalist)} />
                 <div className='SubmitBar'>
                     <button className='SubmitButton'>Submit</button>
                 </div>

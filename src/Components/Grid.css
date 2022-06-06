@@ -11,5 +11,5 @@
     display: flex;
     flex-wrap:wrap;
     text-overflow: ellipsis;
-    /* overflow: auto; */
+    overflow:   auto;
 }
