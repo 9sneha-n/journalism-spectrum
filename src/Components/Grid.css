@@ -1,5 +1,6 @@
 .Grid {
-    border: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
     box-sizing: border-box;
     flex: 1 0 0;
     text-align: center;
@@ -12,4 +13,12 @@
     flex-wrap:wrap;
     text-overflow: ellipsis;
     overflow:   auto;
+}
+
+.lastColGrid {
+    border-right: 1px solid black;
+}
+
+.firstRowGrid{
+    border-top: 1px solid black;
 }

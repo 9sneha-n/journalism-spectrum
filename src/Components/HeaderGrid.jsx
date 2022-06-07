@@ -1,12 +1,10 @@
 import React from 'react';
 import './HeaderGrid.css';
 
-export default class HeaderGrid extends React.Component {
-    render() {
-        return (
-            <div className='HeaderGrid'>
-                <h4>{this.props.title}</h4>
-            </div>
-        )
-    }
+export default function HeaderGrid({ ...props }) {
+    return (
+        <div className='HeaderGrid'>
+            <h4>{props.title}</h4>
+        </div>
+    )
 }

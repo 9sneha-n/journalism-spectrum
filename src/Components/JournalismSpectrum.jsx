@@ -39,11 +39,18 @@ export default function JournalismSpectrum() {
         }
         loadJournos();
     }, []);
-    const journalistDropped = (droppedJourno) => {
-        setJournalists(journalists.filter(function (journo) {
-            return journo.id !== droppedJourno.id
-        }));
+    const journalistDropped = (id) => {
+
+        let placedJourno = journalists.find(j => j.id === id);
+        placedJourno.placedInGrid = true;
+        setJournalists([...journalists.filter((journo) => { return journo.id !== id }), placedJourno]);
     }
+
+    const getJourno = (id) => {
+        return journalists.find(j => j.id === id);
+    }
+
+
     if (!isLoaded) {
         //TO DO : Replace with loading.gif
         return <div>Loading...</div>;
@@ -60,7 +67,7 @@ export default function JournalismSpectrum() {
                     <p className='description'>Drag and drop each journalist within the spectrum :  </p>
                     <ImageDropdown options={journalists} />
                 </>
-                <Spectrum JournoDropped={(placedJournalist) => journalistDropped(placedJournalist)} />
+                <Spectrum journoDropped={(placedJournalist) => journalistDropped(placedJournalist)} getJourno={(id) => getJourno(id)} />
                 <div className='SubmitBar'>
                     <button className='SubmitButton'>Submit</button>
                 </div>

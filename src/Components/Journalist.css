@@ -19,4 +19,8 @@
 .JournalistImage {
     width: 70px;
     height: 70px;
+    cursor: -webkit-grab;
+}
+.JournalistImage:active {
+    cursor: -webkit-grabbing;
 }
