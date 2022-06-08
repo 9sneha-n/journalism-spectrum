@@ -17,7 +17,7 @@ export default function Grid({ ...props }) {
     }
 
     return (
-        <div className={'Grid '+ props.lastColGrid + ' ' + props.firstRowGrid}
+        <div className={'Grid '+ props.rightBorder + ' ' + props.topBorder}
             onDragOver={(e) => onJournalistDraggedOver(e)}
             onDrop={(e) => onJournalistDropped(e)}>
             {/* <h4>{this.props.title}</h4> */}

@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    margin: 5px;
+    margin-left: 10px;
 }
 
+.axisLabel {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    transform: rotate(270deg);
+}

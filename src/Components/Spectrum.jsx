@@ -37,6 +37,8 @@ export default function Spectrum({ ...props }) {
 
     return (
         <div className='Spectrum'>
+            {/* <div className='left axisLabel'>LEFT</div>
+            <div className='right axistLabel'>RIGHT</div> */}
             {[...Array(Constants.NO_OF_ROWS)].map((value, index) => {
 
                 return <Row key={index} 
@@ -47,9 +49,9 @@ export default function Spectrum({ ...props }) {
             }
             )}
             <div className=" Row">
-                <HeaderGrid title="" />
+                <HeaderGrid  title="" rowHeader="rowHeader" />
                 {[...Array(Constants.NO_OF_COLS)].map((value, index) => {
-                   return  <HeaderGrid key={index} title={Constants.COL_HEADERS[index]} />
+                   return  <HeaderGrid key={index} title={Constants.COL_HEADERS[index]}/>
                 }
                 )}
             </div>

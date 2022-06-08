@@ -63,11 +63,10 @@ export default function JournalismSpectrum() {
                 <div className='h50'>
                     <h2 className='headline'>Journalism Spectrum</h2>
                 </div>
-                <>
-                    <p className='description'>Drag and drop each journalist within the spectrum :  </p>
+                <div className='SpectrumContainer' style={{ display: 'flex', height: "100%" }}>
                     <ImageDropdown options={journalists} />
-                </>
-                <Spectrum journoDropped={(placedJournalist) => journalistDropped(placedJournalist)} getJourno={(id) => getJourno(id)} />
+                    <Spectrum journoDropped={(placedJournalist) => journalistDropped(placedJournalist)} getJourno={(id) => getJourno(id)} />
+                </div>
                 <div className='SubmitBar'>
                     <button className='SubmitButton'>Submit</button>
                 </div>

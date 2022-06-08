@@ -3,4 +3,9 @@
     text-align: center;
     overflow: hidden;
     font-family: 'Roboto', sans-serif;
+    min-width: 105px;
+}
+
+.rowHeader {
+    max-width: 120px;
 }

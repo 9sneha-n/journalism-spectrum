@@ -22,19 +22,19 @@
     font-size: 16px;
     padding: 5px 15px;
     border-radius: 3px;
-    border: 1px solid red;
+    border: 1px solid #ec2227;
     cursor: pointer;
     text-align: center;
     outline: none;
-    background: red;
+    background: #ec2227;
     color: white;
     font-family: 'Roboto', sans-serif;
+    margin: 5px;
 }
 
 .droppedDiv {
     border: 1px solid #616160;
     font-family: 'Roboto', sans-serif;
-    padding: 5px 15px;
     border-radius: 5px;
 }
 
@@ -43,6 +43,6 @@
     align-items: center;
     padding: 5px 5px;
     margin: 5px;
-    border: 1px solid red;
+    border: 1px solid #ec2227;
 }
 

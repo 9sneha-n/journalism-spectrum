@@ -17,11 +17,11 @@
     font-size: 16px;
     padding: 5px 15px;
     border-radius: 3px;
-    border: 1px solid red;
+    border: 1px solid #ec2227;
     cursor: pointer;
     text-align: center;
     outline: none;
-    background: red;
+    background: #ec2227;
     color: white;
     font-family: 'Roboto', sans-serif;
 }
@@ -35,7 +35,7 @@
     color: rgb(35, 31, 32);
 }
 .h50 {
-    height: 50px;
+    height: 100px;
 }
 
 .description {
