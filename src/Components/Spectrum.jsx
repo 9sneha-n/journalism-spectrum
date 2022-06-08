@@ -52,7 +52,6 @@ export default function Spectrum({ ...props }) {
     return (
         <div className='Spectrum' ref={spectrumEl}>
             <div className='left axisLabel' style={{top: leftPosition.top, left: leftPosition.left}}>LEFT</div>
-            <div className='right axistLabel'>RIGHT</div> 
 
             {[...Array(Constants.NO_OF_ROWS)].map((value, index) => {
 
