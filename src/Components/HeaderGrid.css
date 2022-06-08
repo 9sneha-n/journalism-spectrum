@@ -2,7 +2,15 @@
     flex: 1 0 0;
     text-align: center;
     font-family: 'Roboto', sans-serif;
-    min-width: 120px;
+    display: flex;
+    min-width: 0;
+}
+
+.GridHeading{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
+    padding: 5px;
 }
 
 .rowHeader {

@@ -1,19 +1,16 @@
 .JournalistDiv {
     display: flex;
-    overflow-x: auto;
-    align-items: center;
-    margin: 5px;
-    display: flex;
     flex-direction: column;
+    margin: 5px;
+    padding: 5px;
     box-shadow: 0 1px 1px 1px rgb(128 128 128);
     align-items: center;
-    max-width: 100px;
+    width: 75px;
     text-align: center;
-    font-size: 14px;
+    font-size: 0.7rem;
     font-weight: 600 ;
     user-select: none;
-    min-width: 100px;
-    padding: 5px;
+    
 }
 
 .JournalistImage {
@@ -23,4 +20,14 @@
 }
 .JournalistImage:active {
     cursor: -webkit-grabbing;
+}
+
+@media (max-width: 1000px) {
+    .JournalistDiv {
+        width: 60px;
+    }
+    .JournalistImage {
+        width: 55px;
+        height: 55px;
+    }
 }

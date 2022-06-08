@@ -1,7 +1,4 @@
-.dropdownImg{
-    width: 70px;
-    height: 70px;
-}
+
 
 .showDropDown {
     display: flex;
@@ -18,9 +15,8 @@
 
 .dropdownButton {
     display: flex;
-    min-height: 30px;
-    font-size: 16px;
-    padding: 5px 15px;
+    font-size: 0.8rem;
+    padding: 5px 5px;
     border-radius: 3px;
     border: 1px solid #ec2227;
     cursor: pointer;
@@ -37,12 +33,3 @@
     font-family: 'Roboto', sans-serif;
     border-radius: 5px;
 }
-
-.dropdownOption {
-    display: flex;
-    align-items: center;
-    padding: 5px 5px;
-    margin: 5px;
-    border: 1px solid #ec2227;
-}
-

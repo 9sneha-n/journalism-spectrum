@@ -6,13 +6,13 @@
 }
 
 .SubmitBar {
-    height: 50px;
+    height: 5%;
 }
 
 .SubmitButton {
     margin: 10px;
     min-height: 30px;
-    font-size: 16px;
+    font-size: .8rem;
     padding: 5px 15px;
     border-radius: 3px;
     border: 1px solid #ec2227;
@@ -33,7 +33,7 @@
     color: rgb(35, 31, 32);
 }
 .h100 {
-    height: 100px;
+    height: 10%;
 }
 
 .description {
