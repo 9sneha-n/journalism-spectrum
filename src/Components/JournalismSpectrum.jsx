@@ -63,7 +63,7 @@ export default function JournalismSpectrum() {
                 <div className='h100'>
                     <h2 className='headline'>Journalism Spectrum</h2>
                 </div>
-                <div className='SpectrumContainer' style={{ display: 'flex', height: "100%" }}>
+                <div className='SpectrumContainer' style={{ display: 'flex', height: "calc(100% - 150px)" }}>
                     <ImageDropdown options={journalists} />
                     <Spectrum journoDropped={(placedJournalist) => journalistDropped(placedJournalist)} getJourno={(id) => getJourno(id)} />
                 </div>

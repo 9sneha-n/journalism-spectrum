@@ -11,8 +11,6 @@
 
 .SubmitButton {
     margin: 10px;
-    align-self: flex-end;
-    float: right;
     min-height: 30px;
     font-size: 16px;
     padding: 5px 15px;
