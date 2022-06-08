@@ -1,10 +1,13 @@
-import {React, useState} from 'react';
+import {React, useState, useRef, useEffect, useLayoutEffect} from 'react';
 import './Spectrum.css';
 import Row from './Row';
 import HeaderGrid from './HeaderGrid';
 import * as Constants from '../constants/constants';
 
 export default function Spectrum({ ...props }) {
+    const spectrumEl = useRef(null);
+    const [leftPosition, setLeftPosition] = useState({top: 0, left:0});
+
     const [journalistsMatrix, setjournalistsMatrix] = useState(Array(6).fill(null).map(() => Array(6).fill(null).map(() => new Array())));
 
     const updateJournalist = (journoId, gridCol, gridRow) => {
@@ -35,17 +38,30 @@ export default function Spectrum({ ...props }) {
         props.journoDropped(journoId);
     }
 
+    useEffect(() => {
+        const handleResize = () => {
+        setLeftPosition({top:(spectrumEl.current.offsetHeight - spectrumEl.current.offsetTop)/2 + spectrumEl.current.offsetTop, 
+                         left:(spectrumEl.current.offsetLeft + 115)});
+        }
+
+        window.addEventListener('resize', handleResize)
+        handleResize();
+
+    }, [setLeftPosition]);
+
     return (
-        <div className='Spectrum'>
-            {/* <div className='left axisLabel'>LEFT</div>
-            <div className='right axistLabel'>RIGHT</div> */}
+        <div className='Spectrum' ref={spectrumEl}>
+            <div className='left axisLabel' style={{top: leftPosition.top, left: leftPosition.left}}>LEFT</div>
+            <div className='right axistLabel'>RIGHT</div> 
+
             {[...Array(Constants.NO_OF_ROWS)].map((value, index) => {
 
                 return <Row key={index} 
                     row={index}
                     title={Constants.ROW_HEADERS[index]} 
                     journalistsMap={journalistsMatrix[index]} 
-                    updateJournalist={(journoId, gridCol) => updateJournalist(journoId, gridCol, index)} />
+                    updateJournalist={(journoId, gridCol) => updateJournalist(journoId, gridCol, index)}
+                     />
             }
             )}
             <div className=" Row">
