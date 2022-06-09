@@ -21,6 +21,9 @@
     background: #ec2227;
     color: white;
     font-family: 'Roboto', sans-serif;
+    position: absolute;
+    right: 0;
+    margin-right: 25px;
 }
 
 .headline {
@@ -32,7 +35,7 @@
     color: rgb(35, 31, 32);
 }
 .h100 {
-    height: 10%;
+    /* height: 10%; */
 }
 
 .description {
