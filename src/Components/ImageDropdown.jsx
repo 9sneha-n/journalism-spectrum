@@ -29,8 +29,11 @@ export default function ImageDropdown({ ...props }) {
                 <div className='droppedDiv'>
                     {props.options && props.options.map((option, index) => (
                         !option.placedInGrid && 
-                        <Journalist key={index} imgSrc={option.imgSrc} name={option.name} id={option.id} />
-                        
+                        <Journalist key={index} 
+                            imgSrc={option.imgSrc} 
+                            name={option.name} 
+                            id={option.id}
+                            updateJournalist={props.updateJournalist} />
                     ))}
                 </div>
             </ul>

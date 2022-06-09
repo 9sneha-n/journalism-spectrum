@@ -9,6 +9,8 @@ export default function JournalismSpectrum() {
     const [journalists, setJournalists] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
+    const [journalistsMatrix, setjournalistsMatrix] = useState(Array(6).fill(null).map(() => Array(6).fill(null).map(() => new Array())));
+
     useEffect(() => {
         const loadJournos = () => {
             fetch('https://9sneha-n.github.io/journalism-spectrum-resc/journalistList.json', { method: 'GET' })
@@ -49,6 +51,32 @@ export default function JournalismSpectrum() {
     const getJourno = (id) => {
         return journalists.find(j => j.id === id);
     }
+    const updateJournalist = (journoId,  gridRow, gridCol) => {
+
+        let journo = getJourno(journoId);
+        let journalistsMatrixL = journalistsMatrix;
+
+
+        //Remove Journalist from any other Grid if already added
+        journalistsMatrixL.forEach((row, i) => {
+            row.forEach((gridJournos, j) => {
+                let journoToRemove = gridJournos.find(j => j.id === journo.id);
+                if (journoToRemove) {
+                    gridJournos.splice(gridJournos.findIndex(j => j.id === journo.id), 1);
+                }
+            });
+        });
+
+        //Add journalist to specified Grid
+        if (journalistsMatrixL[gridRow][gridCol].length === 0 || !journalistsMatrixL[gridRow][gridCol].find(j => j && j.id === journo.id)) {
+            journalistsMatrixL[gridRow][gridCol].push(journo);
+        }
+
+        setjournalistsMatrix(journalistsMatrixL)
+        //Remove from journalist list
+        journalistDropped(journoId);
+    }
+
 
 
     if (!isLoaded) {
@@ -64,8 +92,10 @@ export default function JournalismSpectrum() {
                     <h2 className='headline'>Journalism Spectrum</h2>
                 </div>
                 <div className='SpectrumContainer' style={{ display: 'flex', height: "85%" }}>
-                    <ImageDropdown options={journalists} />
-                    <Spectrum journoDropped={(placedJournalist) => journalistDropped(placedJournalist)} getJourno={(id) => getJourno(id)} />
+                    <ImageDropdown options={journalists} updateJournalist={(id, row, col) => updateJournalist(id, row, col)} />
+                    <Spectrum 
+                        journalistsMatrix={journalistsMatrix}
+                        updateJournalist={(id, row, col) => updateJournalist(id, row, col)} />
                 </div>
                 <div className='SubmitBar'>
                     <button className='SubmitButton'>Submit</button>
