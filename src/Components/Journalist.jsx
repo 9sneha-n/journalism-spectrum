@@ -12,8 +12,15 @@ export default function Journalist({ ...props }) {
         let changedTouch = evt.changedTouches[0];
         let elem = document.elementFromPoint(changedTouch.clientX, changedTouch.clientY);
 
+        //A journalist can be dropped on top of another journalist in a Grid. 
+        //Handle this case, let the new journalist be dropped inside the Grid.
+        if(elem.className.includes('JournalistDiv')){
+            elem = elem.parentElement.parentElement;
+        } else if (elem.className.includes('JournalistImage')) {
+            elem = elem.parentElement.parentElement.parentElement;
+        } 
+
         //Make sure the element where the journalist is dropped is a Grid. 
-        //If its dropped anywhere else, ignore.
         if (elem.className.includes('Grid')) {
 
             //Extract row and column from grid id.
@@ -21,7 +28,7 @@ export default function Journalist({ ...props }) {
             const col = parseInt(elem.id.charAt(7));
     
             props.updateJournalist(id, row, col);
-        }
+        } 
     }
 
     return (
