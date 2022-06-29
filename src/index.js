@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import JournalismSpectrum from './Components/JournalismSpectrum'
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<JournalismSpectrum />);
+root.render(<App />);

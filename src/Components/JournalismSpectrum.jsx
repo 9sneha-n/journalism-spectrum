@@ -3,7 +3,7 @@ import ImageDropdown from './ImageDropdown';
 import './JournalismSpectrum.css';
 import Spectrum from './Spectrum';
 import { useState, useEffect } from 'react';
-
+import * as Constants from '../constants/constants'
 
 export default function JournalismSpectrum() {
     const [journalists, setJournalists] = useState(null);
@@ -77,8 +77,51 @@ export default function JournalismSpectrum() {
         journalistDropped(journoId);
     }
 
+    
+    const handleSubmit = () => {
 
+        let journalists = [];
+        journalistsMatrix.forEach( (row, r_index) => {
+            row.forEach((grid, c_index) => {
+                grid.forEach(journalist => {
+                    let ratedJournalist = {};
+                    ratedJournalist.id = journalist.id;
+                    ratedJournalist.name = journalist.name;
+                    ratedJournalist.weightX = Constants.COL_HEADERS[c_index].weight;
+                    ratedJournalist.weightY = Constants.ROW_HEADERS[r_index].weight;
+                    journalists.push(ratedJournalist);
+                });
+            });    
+        });
 
+        setIsLoaded(false);
+        //On submit, post to server
+        fetch(Constants.POST_JOURNALIST_SPECTRUM_API, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({journalists: journalists})
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json()
+                }
+                throw new Error("Error");
+            })
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    //TO DO : Navigate to results.
+                    // navigate(Constants.RESULTS_RUOTE);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    error.message = "Error";
+                    setError(error);
+                }
+            ).catch((exception) => {
+                setIsLoaded(true);
+                setError(exception);
+            })
+    }
     if (!isLoaded) {
         //TO DO : Replace with loading.gif
         return <div>Loading...</div>;
@@ -88,7 +131,7 @@ export default function JournalismSpectrum() {
     } else {
         return (
             <div className="SpectrumBoard">
-                <div className='h100'>
+                <div>
                     <h2 className='headline'>Journalism Spectrum</h2>
                 </div>
                 <div className='SpectrumContainer' style={{ display: 'flex', height: "85%" }}>
@@ -98,7 +141,7 @@ export default function JournalismSpectrum() {
                         updateJournalist={(id, row, col) => updateJournalist(id, row, col)} />
                 </div>
                 <div className='SubmitBar'>
-                    <button className='SubmitButton'>Submit</button>
+                    <button className='SubmitButton' onClick={handleSubmit} >Submit</button>
                 </div>
             </div>
         );
