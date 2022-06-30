@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import JournalismSpectrum from "./Components/JournalismSpectrum";
+import JournalismSpectrum from "./Pages/JournalismSpectrum";
+import ResultsPage from "./Pages/Results";
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <BrowserRouter>
         <Routes >
           <Route path={"/journalism-spectrum"} element={<JournalismSpectrum />} />
+          <Route path={"/journalism-spectrum/results"} element={<ResultsPage />} />
         </Routes >
       </BrowserRouter>
     </div>

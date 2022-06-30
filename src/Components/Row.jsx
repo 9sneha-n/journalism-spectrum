@@ -2,7 +2,7 @@ import {React} from 'react';
 import Grid from './Grid'
 import HeaderGrid from './HeaderGrid';
 import './Row.css';
-import * as Constants from '../constants/constants';
+import * as Constants from '../Constants/Constants';
 
 export default function Row({...props}) {
     return (

@@ -1,9 +1,9 @@
 import React from 'react';
-import ImageDropdown from './ImageDropdown';
+import ImageDropdown from '../Components/ImageDropdown';
 import './JournalismSpectrum.css';
-import Spectrum from './Spectrum';
+import Spectrum from '../Components/Spectrum';
 import { useState, useEffect } from 'react';
-import * as Constants from '../constants/constants'
+import * as Constants from '../Constants/Constants'
 
 export default function JournalismSpectrum() {
     const [journalists, setJournalists] = useState(null);
@@ -89,6 +89,7 @@ export default function JournalismSpectrum() {
                     ratedJournalist.name = journalist.name;
                     ratedJournalist.weightX = Constants.COL_HEADERS[c_index].weight;
                     ratedJournalist.weightY = Constants.ROW_HEADERS[r_index].weight;
+                    ratedJournalist.imgSrc = journalist.imgSrc;
                     journalists.push(ratedJournalist);
                 });
             });    

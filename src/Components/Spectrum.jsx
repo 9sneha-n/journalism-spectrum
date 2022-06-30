@@ -2,7 +2,7 @@ import {React} from 'react';
 import './Spectrum.css';
 import Row from './Row';
 import HeaderGrid from './HeaderGrid';
-import * as Constants from '../constants/constants';
+import * as Constants from '../Constants/Constants';
 
 export default function Spectrum({  ...props }) {
     return (
