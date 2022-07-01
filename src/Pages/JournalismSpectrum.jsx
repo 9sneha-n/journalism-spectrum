@@ -4,13 +4,14 @@ import './JournalismSpectrum.css';
 import Spectrum from '../Components/Spectrum';
 import { useState, useEffect } from 'react';
 import * as Constants from '../Constants/Constants'
+import { useNavigate } from 'react-router-dom';
 
 export default function JournalismSpectrum() {
     const [journalists, setJournalists] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
     const [journalistsMatrix, setjournalistsMatrix] = useState(Array(6).fill(null).map(() => Array(6).fill(null).map(() => new Array())));
-
+    const navigate = useNavigate();
     useEffect(() => {
         const loadJournos = () => {
             fetch('https://9sneha-n.github.io/journalism-spectrum-resc/journalistList.json', { method: 'GET' })
@@ -51,7 +52,7 @@ export default function JournalismSpectrum() {
     const getJourno = (id) => {
         return journalists.find(j => j.id === id);
     }
-    const updateJournalist = (journoId,  gridRow, gridCol) => {
+    const updateJournalist = (journoId, gridRow, gridCol) => {
 
         let journo = getJourno(journoId);
         let journalistsMatrixL = journalistsMatrix;
@@ -77,11 +78,11 @@ export default function JournalismSpectrum() {
         journalistDropped(journoId);
     }
 
-    
+
     const handleSubmit = () => {
 
         let journalists = [];
-        journalistsMatrix.forEach( (row, r_index) => {
+        journalistsMatrix.forEach((row, r_index) => {
             row.forEach((grid, c_index) => {
                 grid.forEach(journalist => {
                     let ratedJournalist = {};
@@ -92,14 +93,14 @@ export default function JournalismSpectrum() {
                     ratedJournalist.imgSrc = journalist.imgSrc;
                     journalists.push(ratedJournalist);
                 });
-            });    
+            });
         });
 
         setIsLoaded(false);
         //On submit, post to server
         fetch(Constants.POST_JOURNALIST_SPECTRUM_API, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({journalists: journalists})
+            body: JSON.stringify({ journalists: journalists })
         })
             .then((response) => {
                 if (response.ok) {
@@ -110,15 +111,14 @@ export default function JournalismSpectrum() {
             .then(
                 (result) => {
                     setIsLoaded(true);
-                    //TO DO : Navigate to results.
-                    // navigate(Constants.RESULTS_RUOTE);
+                    navigate("/journalism-spectrum/results");
                 },
                 (error) => {
                     setIsLoaded(true);
                     error.message = "Error";
                     setError(error);
-                }
-            ).catch((exception) => {
+                })
+            .catch((exception) => {
                 setIsLoaded(true);
                 setError(exception);
             })
@@ -137,7 +137,7 @@ export default function JournalismSpectrum() {
                 </div>
                 <div className='SpectrumContainer' style={{ display: 'flex', height: "85%" }}>
                     <ImageDropdown options={journalists} updateJournalist={(id, row, col) => updateJournalist(id, row, col)} />
-                    <Spectrum 
+                    <Spectrum
                         journalistsMatrix={journalistsMatrix}
                         updateJournalist={(id, row, col) => updateJournalist(id, row, col)} />
                 </div>
