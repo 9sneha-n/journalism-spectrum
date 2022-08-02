@@ -1,0 +1,65 @@
+.LandingRoot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LandingHeaderBanner {
+    background: #FFEEEE;
+    display: flex;
+    justify-content: center;
+}
+
+.LandingHeader {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.HeaderTitles {
+    width: 50%;
+}
+
+.Title {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 47px;
+    color: #000000;
+}
+
+.Subtitle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: -0.02em;
+    color: #000000;
+}
+
+.HeaderImageDiv {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.HeaderImg {
+    width: 451px;
+    height: 205px;
+    background: #EFEFF0;
+    border: 2px solid #AFB1B6;
+    border-radius: 8px;
+}
+
+.SubHeading {
+    width: 80%;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.SpectrumDiv {
+    width: 80%;
+}

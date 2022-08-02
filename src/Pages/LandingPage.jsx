@@ -1,9 +1,12 @@
 import React from 'react';
-import './JournalismSpectrum.css';
+import "@fontsource/work-sans";
+import "@fontsource/inter";
+import './LandingPage.css';
 import Spectrum from '../Components/Spectrum';
 import { useState, useEffect } from 'react';
 import * as Constants from '../Constants/Constants'
 import { useNavigate } from 'react-router-dom';
+
 export default function ResultsPage() {
     // const [journalistsInSpectrum, setJournalistsInSpectrum] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -30,8 +33,8 @@ export default function ResultsPage() {
                                     .filter((journalist) => {
                                         let roundedAvgWeightX = (journalist.avg_weightX < 0) ? Math.floor(journalist.avg_weightX) : Math.ceil(journalist.avg_weightX);
                                         let roundedAvgWeightY = (journalist.avg_weightY < 0) ? Math.floor(journalist.avg_weightY) : Math.ceil(journalist.avg_weightY);
-                                        if(roundedAvgWeightX === 0) roundedAvgWeightX++;
-                                        if(roundedAvgWeightY === 0) roundedAvgWeightY++;
+                                        if (roundedAvgWeightX === 0) roundedAvgWeightX++;
+                                        if (roundedAvgWeightY === 0) roundedAvgWeightY++;
 
                                         if (roundedAvgWeightX === Constants.COL_HEADERS[c_index].weight
                                             && roundedAvgWeightY === Constants.ROW_HEADERS[r_index].weight) {
@@ -63,7 +66,7 @@ export default function ResultsPage() {
     }, [journalistsMatrix]);
 
     const takeQuiz = () => {
-        navigate("/journalism-spectrum");
+        navigate("/journalism-spectrum/takequiz");
     }
     if (!isLoaded) {
         //TO DO : Replace with loading.gif
@@ -73,11 +76,25 @@ export default function ResultsPage() {
         return <div>Error: {error.message}</div>;
     } else {
         return (
-            <div className="SpectrumBoard">
-                <div>
-                    <h2 className='headline'>Journalism Spectrum</h2>
+            <div className='LandingRoot'>
+                <div className='LandingHeaderBanner'>
+                    <div className='LandingHeader'>
+                        <div className='HeaderTitles'>
+                            <h2 className='Title'>Journalism Spectrum</h2>
+                            <p className='Subtitle'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, velit necessitatibus laborum corporis nostrum numquam voluptas repellendus temporibus aliquid, odit inventore, molestiae ex ut eius mollitia quam nesciunt! Voluptates, illum!</p>
+                        </div>
+                        <div className='HeaderImageDiv'>
+                            <img className='HeaderImg' src='./header-image' />
+                        </div>
+                    </div>
                 </div>
-                <Spectrum journalistsMatrix={journalistsMatrix} />
+                <div className='SubHeading'>
+                    <h2 className='Title'>A sub-heading describing the page</h2>
+                    <p className='Subtitle'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, velit necessitatibus laborum corporis nostrum numquam voluptas repellendus temporibus aliquid, odit inventore, molestiae ex ut eius mollitia quam nesciunt! Voluptates, illum!</p>
+                </div>
+                <div className='SpectrumDiv'>
+                    <Spectrum journalistsMatrix={journalistsMatrix} />
+                </div>
                 <div className='SubmitBar'>
                     <button className='SubmitButton' onClick={takeQuiz} >Take the Quiz!</button>
                 </div>

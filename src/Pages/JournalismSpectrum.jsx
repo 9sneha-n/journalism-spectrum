@@ -111,7 +111,7 @@ export default function JournalismSpectrum() {
             .then(
                 (result) => {
                     setIsLoaded(true);
-                    navigate("/journalism-spectrum/results");
+                    navigate("/journalism-spectrum");
                 },
                 (error) => {
                     setIsLoaded(true);

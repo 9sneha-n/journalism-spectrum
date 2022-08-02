@@ -6,18 +6,26 @@
     font-size: 1rem;
 }
 
-.GridHeading{
+.GridHeading {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #000000;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden; 
-    padding: 5px;
+    overflow: hidden;
 }
 
 @media (max-width: 1000px) {
-    .GridHeading{
+    .GridHeading {
         transform: rotate(270deg);
     }
 }
+
 .rowHeader {
     max-width: 120px;
 }
