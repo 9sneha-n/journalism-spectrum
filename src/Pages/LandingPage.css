@@ -42,13 +42,14 @@
 
 .HeaderImageDiv {
     width: 50%;
-    display: flex;
-    justify-content: center;
+    height: 100%;
+    max-width: 450px;
+    max-height: 200px;
 }
 
 .HeaderImg {
-    width: 451px;
-    height: 205px;
+    height: 100%;
+    width: 100%;
     background: #EFEFF0;
     border: 2px solid #AFB1B6;
     border-radius: 8px;
@@ -61,5 +62,11 @@
 }
 
 .SpectrumDiv {
+    width: 80%;
+    position: relative;
+    margin: 40px;
+}
+
+.LegendDiv{
     width: 80%;
 }

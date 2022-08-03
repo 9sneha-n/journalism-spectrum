@@ -6,24 +6,27 @@
 }
 
 .SubmitBar {
-    height: 5%;
+    width: 100%;
+    margin: 40px;
+    display: flex;
+    justify-content: center;
 }
 
 .SubmitButton {
-    min-height: 30px;
-    font-size: .8rem;
-    padding: 5px 15px;
-    border-radius: 3px;
-    border: 1px solid #ec2227;
-    cursor: pointer;
+    height: 44px;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
     text-align: center;
-    outline: none;
-    background: #ec2227;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    position: absolute;
-    right: 0;
-    margin-right: 25px;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    background: #EC2227;
+    border-radius: 4px;
+    padding: 0px 40px;
+    border: 0px;
+    cursor: pointer;
 }
 
 .headline {

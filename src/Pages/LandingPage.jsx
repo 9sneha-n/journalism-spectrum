@@ -6,6 +6,7 @@ import Spectrum from '../Components/Spectrum';
 import { useState, useEffect } from 'react';
 import * as Constants from '../Constants/Constants'
 import { useNavigate } from 'react-router-dom';
+import Legend from '../Components/Legend';
 
 export default function ResultsPage() {
     // const [journalistsInSpectrum, setJournalistsInSpectrum] = useState([]);
@@ -96,7 +97,10 @@ export default function ResultsPage() {
                     <Spectrum journalistsMatrix={journalistsMatrix} />
                 </div>
                 <div className='SubmitBar'>
-                    <button className='SubmitButton' onClick={takeQuiz} >Take the Quiz!</button>
+                    <button className='SubmitButton' onClick={takeQuiz} >Try it yourself</button>
+                </div>
+                <div className='LegendDiv'>
+                <Legend />
                 </div>
             </div>
         );

@@ -7,6 +7,8 @@ import * as Constants from '../Constants/Constants';
 export default function Spectrum({  ...props }) {
     return (
         <div className='Spectrum'>
+            <div className='xAxisLabel'>Social Spectrum Scale</div>
+            <div className='yAxisLabel'>Political Scale</div>
 
             {[...Array(Constants.NO_OF_ROWS)].map((value, index) => {
 
