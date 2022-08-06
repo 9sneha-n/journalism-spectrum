@@ -1,8 +1,8 @@
 import {React} from 'react';
 import './Spectrum.css';
 import Row from './Row';
-import HeaderGrid from './HeaderGrid';
 import * as Constants from '../Constants/Constants';
+import Grid from './Grid';
 
 export default function Spectrum({  ...props }) {
     return (
@@ -21,10 +21,11 @@ export default function Spectrum({  ...props }) {
                      />
             }
             )}
-            <div className=" Row">
-                <HeaderGrid  title="" rowHeader="rowHeader" />
+            
+            <div className="Row">
+                <Grid  title="" isHeader={true} row={'header'} col={'header'}   />
                 {[...Array(Constants.NO_OF_COLS)].map((value, index) => {
-                   return  <HeaderGrid key={index} title={Constants.COL_HEADERS[index].value}/>
+                   return  <Grid key={index} title={Constants.COL_HEADERS[index].value} isHeader={true} row={'header'} col={'header'}/>
                 }
                 )}
             </div>

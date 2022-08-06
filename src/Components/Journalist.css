@@ -1,5 +1,4 @@
 .JournalistDiv {
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -7,16 +6,15 @@
     gap: 8px;
     min-width: 0px;
     height: 44px;
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: #101828;
+    cursor: -webkit-grab;
+    user-select:none;
+    -webkit-user-drag: element;
 }
 
 .JournalistImage {
@@ -29,11 +27,9 @@
     width: 24px;
     height: 24px;
     border-radius: 200px;
-    flex: none;
-    flex-grow: 0;
 }
 
-.JournalistImage:active {
+.JournalistDiv:active {
     cursor: -webkit-grabbing;
 }
 

@@ -2,7 +2,8 @@
     border-bottom: 1px solid #AFB1B6;
     border-left: 1px solid #AFB1B6;
     box-sizing: border-box;
-    flex: 1 0 0;
+    width: 14.28%;
+    min-width: 100px;
     text-align: center;
     font-family: 'Roboto', sans-serif;
     background: #EFEFF0;
@@ -28,4 +29,30 @@
 
 .xAxisLine {
     border-top: 1px solid black; 
+}
+
+.HeaderGrid {
+    border: none;
+    background: #fff;
+    font-size: 1rem;
+}
+
+.GridHeading {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #000000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media (max-width: 1000px) {
+    .GridHeading {
+        transform: rotate(270deg);
+    }
 }
