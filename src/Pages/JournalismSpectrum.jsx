@@ -5,6 +5,8 @@ import Spectrum from '../Components/Spectrum';
 import { useState, useEffect } from 'react';
 import * as Constants from '../Constants/Constants'
 import { useNavigate } from 'react-router-dom';
+import './LandingPage.css';
+import Legend from '../Components/Legend';
 
 export default function JournalismSpectrum() {
     const [journalists, setJournalists] = useState(null);
@@ -131,18 +133,25 @@ export default function JournalismSpectrum() {
         return <div>Error: {error.message}</div>;
     } else {
         return (
-            <div className="SpectrumBoard">
-                <div>
-                    <h2 className='headline'>Journalism Spectrum</h2>
+            <div className="TakeQuizRoot">
+                <div className='TakeQuizHeader'>
+                    <h2 className='Title'>Journalism Spectrum</h2>
+                    <p className='Subtitle'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, velit necessitatibus laborum corporis nostrum numquam voluptas repellendus temporibus aliquid, odit inventore, molestiae ex ut eius mollitia quam nesciunt! Voluptates, illum!</p>
                 </div>
-                <div className='SpectrumContainer' style={{ display: 'flex', height: "85%" }}>
+                <div className='JournoDropdownDiv'>
+                    Choose a journalist you want to place on the grid: 
                     <ImageDropdown options={journalists} updateJournalist={(id, row, col) => updateJournalist(id, row, col)} />
+                </div>
+                <div className='SpectrumDiv'>
                     <Spectrum
                         journalistsMatrix={journalistsMatrix}
                         updateJournalist={(id, row, col) => updateJournalist(id, row, col)} />
                 </div>
                 <div className='SubmitBar'>
                     <button className='SubmitButton' onClick={handleSubmit} >Submit</button>
+                </div>
+                <div className='LegendDiv'>
+                    <Legend />
                 </div>
             </div>
         );

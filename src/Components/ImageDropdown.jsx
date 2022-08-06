@@ -14,7 +14,7 @@ export default function ImageDropdown({ ...props }) {
 
     
     return (
-        <div>
+        <div className='ImageDropdown'>
             <button className='dropdownButton' type="button" onClick={toggleOptions}>
                 Select Journalist  
                 { !isActive &&

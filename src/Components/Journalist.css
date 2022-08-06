@@ -1,28 +1,43 @@
 .JournalistDiv {
+
     display: flex;
-    flex-direction: column;
-    margin: 5px;
-    padding: 5px;
-    box-shadow: 0 1px 1px 1px rgb(128 128 128);
+    flex-direction: row;
     align-items: center;
-    width: 75px;
-    text-align: center;
-    font-size: 0.7rem;
-    font-weight: 600 ;
-    user-select: none;
-    
+    padding: 10px 14px;
+    gap: 8px;
+    min-width: 0px;
+    height: 44px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #101828;
 }
 
 .JournalistImage {
-    width: 70px;
-    height: 70px;
     cursor: -webkit-grab;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 24px;
+    height: 24px;
+    border-radius: 200px;
+    flex: none;
+    flex-grow: 0;
 }
+
 .JournalistImage:active {
     cursor: -webkit-grabbing;
 }
 
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
     .JournalistDiv {
         width: 60px;
     }
@@ -30,4 +45,4 @@
         width: 55px;
         height: 55px;
     }
-}
+} */
