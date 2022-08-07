@@ -32,7 +32,8 @@ export default function Grid({ ...props }) {
                                 imgSrc={journo.imgSrc}
                                 name={journo.name}
                                 id={journo.id}
-                                updateJournalist={props.updateJournalist} />
+                                updateJournalist={props.updateJournalist}
+                                journoState = {(props.editMode === true) ? 'JournoInEdit' : 'JournoInView' } />
                         })
                     }
                 </div>

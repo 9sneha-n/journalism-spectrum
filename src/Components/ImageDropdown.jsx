@@ -18,22 +18,26 @@ export default function ImageDropdown({ ...props }) {
             <button className='dropdownButton' type="button" onClick={toggleOptions}>
                 Select Journalist  
                 { !isActive &&
-                    <div style={{ margin: '0 0 0 15px' }}>&#9660;</div>
+                    <div  class="arrow down" />
+                    
                 }
                 { isActive &&
-                    <div style={{ margin: '0 0 0 15px' }}>&#9650;</div>
+                    <div  class="arrow up" />
                 }
 
             </button>
             <ul className={`${isActive ? "showDropDown" : "hideDropDown"}`} >
                 <div className='droppedDiv'>
                     {props.options && props.options.map((option, index) => (
-                        !option.placedInGrid && 
-                        <Journalist key={index} 
-                            imgSrc={option.imgSrc} 
-                            name={option.name} 
-                            id={option.id}
-                            updateJournalist={props.updateJournalist} />
+                       !option.placedInGrid && 
+                        <div className='JournoInDropDown'>
+                            <Journalist key={index} 
+                                imgSrc={option.imgSrc} 
+                                name={option.name} 
+                                id={option.id}
+                                updateJournalist={props.updateJournalist}
+                                journoState = 'JournoInDropdown' />
+                        </div>
                     ))}
                 </div>
             </ul>

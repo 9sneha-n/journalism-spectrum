@@ -2,6 +2,8 @@ import React from 'react';
 import './Journalist.css';
 export default function Journalist({ ...props }) {
 
+    // JournoInDropdown, JournoInEdit, JournoInView are 3 states of a journo
+
     const OnJournalistDragged = (evt, id) => {
         evt.dataTransfer.setData("JournoId", id);
     }
@@ -32,12 +34,15 @@ export default function Journalist({ ...props }) {
     }
 
     return (
-        <div className='JournalistDiv draggable'
+        props.journoState !== 'JournoInView'  ? 
+        <div className={ props.journoState + ' draggable' }
             onDragStart={(e) => OnJournalistDragged(e, props.id)} 
             onTouchEnd={(e) => OnJournalistTouchEnd(e, props.id)}
             >
-            <img className='JournalistImage' src={props.imgSrc} alt={props.name} />
-            {props.name}
+            <img className='JournoImg' src={props.imgSrc} alt={props.name} />
+            <p className='JournoName'>{props.name}</p>
         </div>
+        :
+        <img className='JournoImgView' src={props.imgSrc} alt={props.name} />
     );
 }

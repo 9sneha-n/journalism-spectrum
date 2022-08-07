@@ -1,23 +1,29 @@
-.JournalistDiv {
+.JournoInDropdown {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 10px 14px;
     gap: 8px;
-    min-width: 0px;
     height: 44px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #101828;
     cursor: -webkit-grab;
     user-select:none;
     -webkit-user-drag: element;
 }
 
-.JournalistImage {
+.JournoInEdit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+    border: 1px solid #101828;
+    border-radius: 6px;
+    margin: 2px;
+    cursor: -webkit-grab;
+    user-select:none;
+    -webkit-user-drag: element;
+}
+.JournoImg {
     cursor: -webkit-grab;
     display: flex;
     flex-direction: column;
@@ -29,16 +35,26 @@
     border-radius: 200px;
 }
 
+.JournoImgView, .JournoInEdit .JournoImg {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #FFFFFF;
+    border-radius: 100px;
+}
+
+.JournoName {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #101828;
+}
+.JournoInEdit .JournoName {
+    font-weight: 700;
+    color: #000000;
+}
+
 .JournalistDiv:active {
     cursor: -webkit-grabbing;
 }
-
-/* @media (max-width: 1000px) {
-    .JournalistDiv {
-        width: 60px;
-    }
-    .JournalistImage {
-        width: 55px;
-        height: 55px;
-    }
-} */

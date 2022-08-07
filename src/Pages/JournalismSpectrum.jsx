@@ -44,8 +44,8 @@ export default function JournalismSpectrum() {
         }
         loadJournos();
     }, []);
-    const journalistDropped = (id) => {
 
+    const journalistDropped = (id) => {
         let placedJourno = journalists.find(j => j.id === id);
         placedJourno.placedInGrid = true;
         setJournalists([...journalists.filter((journo) => { return journo.id !== id }), placedJourno]);
@@ -145,7 +145,8 @@ export default function JournalismSpectrum() {
                 <div className='SpectrumDiv'>
                     <Spectrum
                         journalistsMatrix={journalistsMatrix}
-                        updateJournalist={(id, row, col) => updateJournalist(id, row, col)} />
+                        updateJournalist={(id, row, col) => updateJournalist(id, row, col)}
+                        editMode={true} />
                 </div>
                 <div className='SubmitBar'>
                     <button className='SubmitButton' onClick={handleSubmit} >Submit</button>
