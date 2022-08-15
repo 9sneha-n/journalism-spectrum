@@ -1,30 +1,17 @@
-.JournoInDropdown {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px 14px;
-    gap: 8px;
-    height: 44px;
-    cursor: -webkit-grab;
-    user-select:none;
-    -webkit-user-drag: element;
-}
+
 
 .JournoInEdit {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 5px;
+    padding-left: 5px;
     gap: 5px;
     border: 1px solid #101828;
     border-radius: 6px;
     margin: 2px;
-    cursor: -webkit-grab;
     user-select:none;
-    -webkit-user-drag: element;
 }
 .JournoImg {
-    cursor: -webkit-grab;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -55,6 +42,8 @@
     color: #000000;
 }
 
-.JournalistDiv:active {
-    cursor: -webkit-grabbing;
+.crossIcon{
+    align-self: flex-start;
+    color: #6B6E74;
+    padding: 0 5px;
 }

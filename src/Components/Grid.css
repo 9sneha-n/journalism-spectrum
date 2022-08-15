@@ -9,9 +9,25 @@
     background: #EFEFF0;
 }
 
+.plusCount {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #FFFFFF;
+    border-radius: 100px;
+    color: #AFB1B6;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .JournoCluster {
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     text-overflow: ellipsis;
 }
 
@@ -23,12 +39,12 @@
     border-right: 1px solid black;
 }
 
-.topBorder{
+.topBorder {
     border-top: 1px solid #AFB1B6;
 }
 
 .xAxisLine {
-    border-top: 1px solid black; 
+    border-top: 1px solid black;
 }
 
 .HeaderGrid {

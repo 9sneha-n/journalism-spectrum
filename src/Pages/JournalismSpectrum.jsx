@@ -12,6 +12,7 @@ export default function JournalismSpectrum() {
     const [journalists, setJournalists] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
+    const [activeJourno, setActiveJourno] = useState(null);
     const [journalistsMatrix, setjournalistsMatrix] = useState(Array(6).fill(null).map(() => Array(6).fill(null).map(() => new Array())));
     const navigate = useNavigate();
     useEffect(() => {
@@ -49,40 +50,49 @@ export default function JournalismSpectrum() {
         let placedJourno = journalists.find(j => j.id === id);
         placedJourno.placedInGrid = true;
         setJournalists([...journalists.filter((journo) => { return journo.id !== id }), placedJourno]);
+        //after the journalists is placed in the grid, unset as active journo.
+        setActiveJourno(null);
     }
 
     const getJourno = (id) => {
         return journalists.find(j => j.id === id);
     }
-    const updateJournalist = (journoId, gridRow, gridCol) => {
+    const updateJournalist = (gridRow, gridCol) => {
 
-        let journo = getJourno(journoId);
+        let journo = getJourno(activeJourno);
         let journalistsMatrixL = journalistsMatrix;
 
+        if (journo) //If a journo is selected 
+        {
+            //Add journalist to specified Grid
+            if (journalistsMatrixL[gridRow][gridCol].length === 0 || !journalistsMatrixL[gridRow][gridCol].find(j => j && j.id === journo.id)) {
+                journalistsMatrixL[gridRow][gridCol].push(journo);
+            }
 
-        //Remove Journalist from any other Grid if already added
-        journalistsMatrixL.forEach((row, i) => {
+            setjournalistsMatrix(journalistsMatrixL)
+            //Remove from journalist list
+            journalistDropped(journo.id);
+        }
+    }
+    const removeJourno = (id) => {
+        let journalistsMatrixL = journalistsMatrix;
+        journalistsMatrix.forEach((row, i) => {
             row.forEach((gridJournos, j) => {
-                let journoToRemove = gridJournos.find(j => j.id === journo.id);
+                let journoToRemove = gridJournos.find(j => j.id === id);
                 if (journoToRemove) {
-                    gridJournos.splice(gridJournos.findIndex(j => j.id === journo.id), 1);
+                    gridJournos.splice(gridJournos.findIndex(j => j.id === id), 1);
                 }
             });
         });
-
-        //Add journalist to specified Grid
-        if (journalistsMatrixL[gridRow][gridCol].length === 0 || !journalistsMatrixL[gridRow][gridCol].find(j => j && j.id === journo.id)) {
-            journalistsMatrixL[gridRow][gridCol].push(journo);
-        }
-
         setjournalistsMatrix(journalistsMatrixL)
-        //Remove from journalist list
-        journalistDropped(journoId);
+
+        let j = getJourno(id);
+        j.placedInGrid = false;
+        setJournalists([...journalists.filter((journo) => { return journo.id !== id }), j]);
     }
 
 
     const handleSubmit = () => {
-
         let journalists = [];
         journalistsMatrix.forEach((row, r_index) => {
             row.forEach((grid, c_index) => {
@@ -139,13 +149,14 @@ export default function JournalismSpectrum() {
                     <p className='Subtitle'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, velit necessitatibus laborum corporis nostrum numquam voluptas repellendus temporibus aliquid, odit inventore, molestiae ex ut eius mollitia quam nesciunt! Voluptates, illum!</p>
                 </div>
                 <div className='JournoDropdownDiv'>
-                    Choose a journalist you want to place on the grid: 
-                    <ImageDropdown options={journalists} updateJournalist={(id, row, col) => updateJournalist(id, row, col)} />
+                    Choose a journalist you want to place on the grid:
+                    <ImageDropdown options={journalists} setActiveJourno={setActiveJourno} activeJourno={activeJourno} />
                 </div>
                 <div className='SpectrumDiv'>
                     <Spectrum
                         journalistsMatrix={journalistsMatrix}
-                        updateJournalist={(id, row, col) => updateJournalist(id, row, col)}
+                        updateJournalist={(row, col) => updateJournalist(row, col)}
+                        removeJourno={removeJourno}
                         editMode={true} />
                 </div>
                 <div className='SubmitBar'>

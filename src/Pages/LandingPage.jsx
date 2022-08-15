@@ -94,7 +94,7 @@ export default function ResultsPage() {
                     <p className='Subtitle'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, velit necessitatibus laborum corporis nostrum numquam voluptas repellendus temporibus aliquid, odit inventore, molestiae ex ut eius mollitia quam nesciunt! Voluptates, illum!</p>
                 </div>
                 <div className='SpectrumDiv'>
-                    <Spectrum journalistsMatrix={journalistsMatrix} editMode={false} />
+                    <Spectrum journalistsMatrix={journalistsMatrix} editMode={false}/>
                 </div>
                 <div className='SubmitBar'>
                     <button className='SubmitButton' onClick={takeQuiz} >Try it yourself</button>
