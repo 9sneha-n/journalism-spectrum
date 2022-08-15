@@ -9,10 +9,9 @@ import { useNavigate } from 'react-router-dom';
 import Legend from '../Components/Legend';
 
 export default function ResultsPage() {
-    // const [journalistsInSpectrum, setJournalistsInSpectrum] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
-    const [journalistsMatrix, setjournalistsMatrix] = useState(Array(6).fill(null).map(() => Array(6).fill(null).map(() => new Array())));
+    const [journalistsMatrix] = useState(Array(6).fill(null).map(() => Array(6).fill(null).map(() => new Array())));
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -85,7 +84,7 @@ export default function ResultsPage() {
                             <p className='Subtitle'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, velit necessitatibus laborum corporis nostrum numquam voluptas repellendus temporibus aliquid, odit inventore, molestiae ex ut eius mollitia quam nesciunt! Voluptates, illum!</p>
                         </div>
                         <div className='HeaderImageDiv'>
-                            <img className='HeaderImg' src='./header-image' />
+                            <img className='HeaderImg' src='./header-image' alt='Journalism Spectrum Header' />
                         </div>
                     </div>
                 </div>

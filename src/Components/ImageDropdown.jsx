@@ -1,11 +1,34 @@
 import React from 'react';
 import './ImageDropdown.css';
 import './Journalist.css'
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function ImageDropdown({ ...props }) {
 
     const [isActive, setIsActive] = useState(false);
+    const ref = useRef();
+
+    // Track events outside scope
+    const clickOutside = (e) => {
+        if (ref.current.contains(e.target)) {
+            // inside click
+            console.log('clicked inside')
+            return;
+        }
+        // outside click
+        console.log('clicked outside scope')
+        setIsActive(false)
+    }
+
+    // Do something after component renders
+    useEffect(() => {
+        document.addEventListener('mousedown', clickOutside);
+
+        // clean up function before running new effect
+        return () => {
+            document.removeEventListener('mousedown', clickOutside);
+        }
+    }, [isActive])
 
     const toggleOptions = () => {
         setIsActive(!isActive);
@@ -17,7 +40,7 @@ export default function ImageDropdown({ ...props }) {
 
     return (
         <div className='ImageDropdown'>
-            <button className='dropdownButton' type="button" onClick={toggleOptions}>
+            <button className='dropdownButton' type="button" onClick={toggleOptions} >
                 Select Journalist
                 {!isActive &&
                     <div className="arrow down" />
@@ -26,7 +49,7 @@ export default function ImageDropdown({ ...props }) {
                     <div className="arrow up" />
                 }
             </button>
-            <ul className={`${isActive ? "showDropDown" : "hideDropDown"}`} >
+            <ul className={`${isActive ? "showDropDown" : "hideDropDown"}`} ref={ref} >
                 <div className='droppedDiv'>
                     {props.options && props.options.map((option, index) => (
                         !option.placedInGrid &&

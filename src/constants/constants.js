@@ -56,3 +56,5 @@ export const COL_HEADERS = [
 export const POST_JOURNALIST_SPECTRUM_API = "http://localhost:3001/journalism_spectrum";
 
 export const RESULTS_RUOTE = "/results";
+
+export const MAX_JOURNO_CIRCLE_IN_GRID = 3;
