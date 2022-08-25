@@ -45,6 +45,7 @@
     border-radius: 8px;
     width: 310px;
     max-height: 500px;
+    overflow-y: auto;
 }
 
 .dropDownContent {
