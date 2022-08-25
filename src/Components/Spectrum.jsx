@@ -16,8 +16,8 @@ export default function Spectrum({  ...props }) {
                     row={index}
                     title={Constants.ROW_HEADERS[index].value} 
                     journalistsMap={props.journalistsMatrix[index]} 
-                    updateJournalist={( row, col) => props.updateJournalist(row, col)}
-                    removeJourno={props.removeJourno}
+                    updateJournalist={(col) => props.updateJournalist(index, col)}
+                    removeJourno={(id, col) => props.removeJourno(id, index, col)}
                     editMode={props.editMode}    
                      />
             }

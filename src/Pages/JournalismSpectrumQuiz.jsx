@@ -1,20 +1,19 @@
-import React from 'react';
-import ImageDropdown from '../Components/ImageDropdown';
-import './JournalismSpectrum.css';
-import Spectrum from '../Components/Spectrum';
 import { useState, useEffect } from 'react';
-import * as Constants from '../Constants/Constants'
 import { useNavigate } from 'react-router-dom';
-import './LandingPage.css';
+import ImageDropdown from '../Components/ImageDropdown';
+import Spectrum from '../Components/Spectrum';
 import Legend from '../Components/Legend';
+import * as Constants from '../Constants/Constants'
+import './JournalismSpectrumQuiz.css';
 
-export default function JournalismSpectrum() {
+export default function JournalismSpectrumQuiz() {
     const [journalists, setJournalists] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
-    const [activeJourno, setActiveJourno] = useState(null);
+    const [activeJournoId, setActiveJournoId] = useState(null);
     const [journalistsMatrix, setjournalistsMatrix] = useState(Array(6).fill(null).map(() => Array(6).fill(null).map(() => new Array())));
     const navigate = useNavigate();
+
     useEffect(() => {
         const loadJournos = () => {
             fetch('https://9sneha-n.github.io/journalism-spectrum-resc/journalistList.json', { method: 'GET' })
@@ -33,62 +32,39 @@ export default function JournalismSpectrum() {
                         setIsLoaded(true);
                         //TO DO : Error handling, track the error to tracking/logging backend
                         console.log("An error occured. " + error.message);
-                        error.message = 'Something went wrong, Please try again later';
-                        setError(error);
+                        setError('Something went wrong, Please try again later');
                     }
                 ).catch((exception) => {
                     //TO DO : Error handling, track the error to tracking/logging backend
                     console.log("An exception occured. " + exception);
                     setIsLoaded(true);
-                    setError(exception);
+                    setError('Something went wrong, Please try again later');
                 })
         }
         loadJournos();
     }, []);
-
-    const journalistDropped = (id) => {
-        let placedJourno = journalists.find(j => j.id === id);
-        placedJourno.placedInGrid = true;
-        setJournalists([...journalists.filter((journo) => { return journo.id !== id }), placedJourno]);
-        //after the journalists is placed in the grid, unset as active journo.
-        setActiveJourno(null);
-    }
 
     const getJourno = (id) => {
         return journalists.find(j => j.id === id);
     }
     const updateJournalist = (gridRow, gridCol) => {
 
-        let journo = getJourno(activeJourno);
-        let journalistsMatrixL = journalistsMatrix;
-
+        let journo = getJourno(activeJournoId);
         if (journo) //If a journo is selected 
         {
             //Add journalist to specified Grid
-            if (journalistsMatrixL[gridRow][gridCol].length === 0 || !journalistsMatrixL[gridRow][gridCol].find(j => j && j.id === journo.id)) {
-                journalistsMatrixL[gridRow][gridCol].push(journo);
-            }
-
-            setjournalistsMatrix(journalistsMatrixL)
+            journalistsMatrix[gridRow][gridCol].push(journo);
             //Remove from journalist list
-            journalistDropped(journo.id);
+            journo.placedInGrid = true;
+            //after the journalists is placed in the grid, unset as active journo.
+            setActiveJournoId(null);
         }
     }
-    const removeJourno = (id) => {
-        let journalistsMatrixL = journalistsMatrix;
-        journalistsMatrix.forEach((row, i) => {
-            row.forEach((gridJournos, j) => {
-                let journoToRemove = gridJournos.find(j => j.id === id);
-                if (journoToRemove) {
-                    gridJournos.splice(gridJournos.findIndex(j => j.id === id), 1);
-                }
-            });
-        });
-        setjournalistsMatrix(journalistsMatrixL)
-
-        let j = getJourno(id);
-        j.placedInGrid = false;
-        setJournalists([...journalists.filter((journo) => { return journo.id !== id }), j]);
+    const removeJourno = (id, row, col) => {
+        journalistsMatrix[row][col].splice(journalistsMatrix[row][col].findIndex(j => j.id === id), 1);
+        let journo = getJourno(id);
+        journo.placedInGrid = false;
+        setJournalists([...journalists.filter((journo) => { return journo.id !== id }), journo]);
     }
 
 
@@ -118,21 +94,23 @@ export default function JournalismSpectrum() {
                 if (response.ok) {
                     return response.json()
                 }
-                throw new Error("Error");
+                throw new Error('Something went wrong, Please try again later');
             })
             .then(
                 (result) => {
                     setIsLoaded(true);
+                    console.log("Submit Quiz, Result : " + result);
                     navigate("/journalism-spectrum");
                 },
                 (error) => {
                     setIsLoaded(true);
-                    error.message = "Error";
-                    setError(error);
+                    console.log("Submit Quiz, Error : " + error);
+                    setError('Something went wrong, Please try again later');
                 })
             .catch((exception) => {
                 setIsLoaded(true);
-                setError(exception);
+                console.log("Submit Quiz, Exception : " + exception);
+                setError('Something went wrong, Please try again later');
             })
     }
     if (!isLoaded) {
@@ -140,23 +118,23 @@ export default function JournalismSpectrum() {
         return <div>Loading...</div>;
     }
     else if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div>Error: {error}</div>;
     } else {
         return (
             <div className="TakeQuizRoot">
                 <div className='TakeQuizHeader'>
-                    <h2 className='Title'>Journalism Spectrum</h2>
-                    <p className='Subtitle'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, velit necessitatibus laborum corporis nostrum numquam voluptas repellendus temporibus aliquid, odit inventore, molestiae ex ut eius mollitia quam nesciunt! Voluptates, illum!</p>
+                    <h2 className='Title'>{Constants.TitleText}</h2>
+                    <p className='Subtitle'>{Constants.SubtitleText}</p>
                 </div>
                 <div className='JournoDropdownDiv'>
-                    Choose a journalist you want to place on the grid:
-                    <ImageDropdown options={journalists} setActiveJourno={setActiveJourno} activeJourno={activeJourno} />
+                    {Constants.JournoDropDownLabel}
+                    <ImageDropdown options={journalists} setActiveJourno={setActiveJournoId} activeJourno={activeJournoId} />
                 </div>
                 <div className='SpectrumDiv'>
                     <Spectrum
                         journalistsMatrix={journalistsMatrix}
                         updateJournalist={(row, col) => updateJournalist(row, col)}
-                        removeJourno={removeJourno}
+                        removeJourno={(id, row, col) => removeJourno(id, row, col)}
                         editMode={true} />
                 </div>
                 <div className='SubmitBar'>

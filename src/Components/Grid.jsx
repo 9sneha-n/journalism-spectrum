@@ -7,7 +7,7 @@ export default function Grid({ ...props }) {
     const showViewAll = (props.editMode === false && props.journalists.length > MAX_JOURNO_CIRCLE_IN_GRID) ? true : false;
 
     const onGridClicked = () => {
-        props.updateJournalist(props.row, props.col);
+        props.updateJournalist();
     }
 
     const computedClassnames = props.isHeader ? 'Grid HeaderGrid' : 'Grid ' + props.rightBorder + ' ' + props.topBorder;
@@ -29,7 +29,7 @@ export default function Grid({ ...props }) {
                                     imgSrc={journo.imgSrc}
                                     name={journo.name}
                                     id={journo.id}
-                                    removeJourno={props.removeJourno}
+                                    removeJourno={() => props.removeJourno(journo.id)}
                                     editMode={props.editMode} />
                             }
                         })

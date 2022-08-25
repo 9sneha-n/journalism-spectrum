@@ -1,14 +1,14 @@
 import React from 'react';
 import "@fontsource/work-sans";
 import "@fontsource/inter";
-import './LandingPage.css';
+import './JournalismSpectrumResults.css';
 import Spectrum from '../Components/Spectrum';
 import { useState, useEffect } from 'react';
 import * as Constants from '../Constants/Constants'
 import { useNavigate } from 'react-router-dom';
 import Legend from '../Components/Legend';
 
-export default function ResultsPage() {
+export default function JournalismSpectrumResults() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
     const [journalistsMatrix] = useState(Array(6).fill(null).map(() => Array(6).fill(null).map(() => new Array())));
@@ -26,13 +26,13 @@ export default function ResultsPage() {
                 .then(
                     (result) => {
                         setIsLoaded(true);
-                        //TO DO : Handle case when math.floor() results to 0.
                         journalistsMatrix.forEach((row, r_index) => {
                             row.forEach((grid, c_index) => {
                                 let journosInGrid = result.journalists
                                     .filter((journalist) => {
                                         let roundedAvgWeightX = (journalist.avg_weightX < 0) ? Math.floor(journalist.avg_weightX) : Math.ceil(journalist.avg_weightX);
                                         let roundedAvgWeightY = (journalist.avg_weightY < 0) ? Math.floor(journalist.avg_weightY) : Math.ceil(journalist.avg_weightY);
+                                        //If the average weight is exactly zero, then we place the journalist in the first positive grid in respective axis.
                                         if (roundedAvgWeightX === 0) roundedAvgWeightX++;
                                         if (roundedAvgWeightY === 0) roundedAvgWeightY++;
 
@@ -52,14 +52,13 @@ export default function ResultsPage() {
                         setIsLoaded(true);
                         //TO DO : Error handling, track the error to tracking/logging backend
                         console.log("An error occured. " + error.message);
-                        error.message = 'Something went wrong, Please try again later';
-                        setError(error);
+                        setError('Something went wrong, Please try again later');
                     }
                 ).catch((exception) => {
                     //TO DO : Error handling, track the error to tracking/logging backend
                     console.log("An exception occured. " + exception);
                     setIsLoaded(true);
-                    setError(exception);
+                    setError('Something went wrong, Please try again later');
                 })
         }
         loadJournos();
@@ -73,24 +72,24 @@ export default function ResultsPage() {
         return <div>Loading...</div>;
     }
     else if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div>Error: {error}</div>;
     } else {
         return (
-            <div className='LandingRoot'>
-                <div className='LandingHeaderBanner'>
-                    <div className='LandingHeader'>
+            <div className='ResultsRoot'>
+                <div className='ResultsHeaderBanner'>
+                    <div className='ResultsHeader'>
                         <div className='HeaderTitles'>
-                            <h2 className='Title'>Journalism Spectrum</h2>
-                            <p className='Subtitle'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, velit necessitatibus laborum corporis nostrum numquam voluptas repellendus temporibus aliquid, odit inventore, molestiae ex ut eius mollitia quam nesciunt! Voluptates, illum!</p>
+                            <h2 className='Title'>{Constants.TitleText}</h2>
+                            <p className='Subtitle'>{Constants.SubtitleText}</p>
                         </div>
                         <div className='HeaderImageDiv'>
-                            <img className='HeaderImg' src='./header-image' alt='Journalism Spectrum Header' />
+                            <img className='HeaderImg' src='./header-image'/>
                         </div>
                     </div>
                 </div>
                 <div className='SubHeading'>
-                    <h2 className='Title'>A sub-heading describing the page</h2>
-                    <p className='Subtitle'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, velit necessitatibus laborum corporis nostrum numquam voluptas repellendus temporibus aliquid, odit inventore, molestiae ex ut eius mollitia quam nesciunt! Voluptates, illum!</p>
+                    <h2 className='Title'>{Constants.SubheadingText}</h2>
+                    <p className='Subtitle'>{Constants.SubheadingSubtitleText}</p>
                 </div>
                 <div className='SpectrumDiv'>
                     <Spectrum journalistsMatrix={journalistsMatrix} editMode={false}/>
