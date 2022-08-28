@@ -15,6 +15,6 @@ export default function Journalist({ ...props }) {
             <div className='crossIcon' onClick={(e) => onCrossClick(e)}>&#10006;</div>
         </div>
         :
-        <img className='JournoImgView' src={props.imgSrc} alt={props.name} />
+        <img className='JournoImg' src={props.imgSrc} alt={props.name} />
     );
 }

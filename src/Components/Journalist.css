@@ -1,29 +1,16 @@
-
-
 .JournoInEdit {
     display: flex;
-    flex-direction: row;
     align-items: center;
     padding-left: 5px;
     gap: 5px;
     border: 1px solid #101828;
     border-radius: 6px;
     margin: 2px;
-    user-select:none;
-}
-.JournoImg {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    width: 24px;
-    height: 24px;
-    border-radius: 200px;
-    font-size: 8px;
+    user-select: none;
+    max-width: 90%;
 }
 
-.JournoImgView, .JournoInEdit .JournoImg {
+.JournoImg {
     width: 40px;
     height: 40px;
     border: 2px solid #FFFFFF;
@@ -31,20 +18,39 @@
 }
 
 .JournoName {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #101828;
-}
-.JournoInEdit .JournoName {
     font-weight: 700;
     color: #000000;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 5px;
 }
 
-.crossIcon{
+.crossIcon {
     align-self: flex-start;
     color: #6B6E74;
-    padding: 0 5px;
+}
+
+
+
+@media (max-width: 1000px) {
+
+    .JournoInEdit {
+        gap: 1px;
+    }
+    .JournoImg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .JournoName {
+        font-size: 14px;
+        line-height: 14px;
+    }
+    .crossIcon {
+        font-size: 12px;
+    }
+
 }

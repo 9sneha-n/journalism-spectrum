@@ -1,12 +1,13 @@
 import React from 'react';
 import Journalist from './Journalist';
 import './Grid.css';
-import { MAX_JOURNO_CIRCLE_IN_GRID } from '../Constants/Constants';
+import { MAX_JOURNO_CIRCLE_IN_GRID } from '../Constants/constants';
 export default function Grid({ ...props }) {
 
     const showViewAll = (props.editMode === false && props.journalists.length > MAX_JOURNO_CIRCLE_IN_GRID) ? true : false;
 
     const onGridClicked = () => {
+        //Grid has been clicked, if there is an active journalist, place in grid.
         props.updateJournalist();
     }
 
@@ -31,15 +32,17 @@ export default function Grid({ ...props }) {
                                     id={journo.id}
                                     removeJourno={() => props.removeJourno(journo.id)}
                                     editMode={props.editMode} />
+                            } else {
+                                return null;
                             }
                         })
                     }
-                    {showViewAll ?
-                        <div className='plusCount'>+{props.journalists.length - MAX_JOURNO_CIRCLE_IN_GRID}</div>
-                        :
-                        null
+                    {showViewAll &&
+                        <div>
+                            <div className='plusCount'>+{props.journalists.length - MAX_JOURNO_CIRCLE_IN_GRID}</div>
+                            <div className='viewAll' onClick={() => { alert(JSON.stringify(props.journalists)) }}>View all</div>
+                        </div>
                     }
-                    <div className='viewAll'  style={{ display: showViewAll ? 'block' : 'none' }} onClick={() => {alert(JSON.stringify(props.journalists))}}>View all</div>
                 </div>
             }
         </div>

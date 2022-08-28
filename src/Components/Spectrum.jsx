@@ -1,14 +1,14 @@
 import {React} from 'react';
 import './Spectrum.css';
 import Row from './Row';
-import * as Constants from '../Constants/Constants';
+import * as Constants from '../Constants/constants';
 import Grid from './Grid';
 
 export default function Spectrum({  ...props }) {
     return (
         <div className='Spectrum'>
-            <div className='xAxisLabel'>Social Spectrum Scale</div>
-            <div className='yAxisLabel'>Political Scale</div>
+            <div className='xAxisLabel'>{Constants.xAxisLabel}</div>
+            <div className='yAxisLabel'>{Constants.yAxisLabel}</div>
 
             {[...Array(Constants.NO_OF_ROWS)].map((value, index) => {
 

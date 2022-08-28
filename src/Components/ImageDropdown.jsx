@@ -8,19 +8,16 @@ export default function ImageDropdown({ ...props }) {
     const [isActive, setIsActive] = useState(false);
     const ref = useRef();
 
-    // Track events outside scope
+    // Track events outside drop down
     const clickOutside = (e) => {
         if (ref.current.contains(e.target)) {
             // inside click
-            console.log('clicked inside')
             return;
         }
         // outside click
-        console.log('clicked outside scope')
         setIsActive(false)
     }
 
-    // Do something after component renders
     useEffect(() => {
         document.addEventListener('mousedown', clickOutside);
 
@@ -53,10 +50,10 @@ export default function ImageDropdown({ ...props }) {
                 <div className='droppedDiv'>
                     {props.options && props.options.map((option, index) => (
                         !option.placedInGrid &&
-                        <div className='dropDownContent' onClick={() => setSelectedJourno(option.id)} key={option.id}>
-                            <div className='journoInfo'>
-                                <img className='JournoImg' src={option.imgSrc} alt={option.name} id={option.id} key={index} />
-                                <p className='JournoName'>{option.name}</p>
+                        <div className='optionDiv' onClick={() => setSelectedJourno(option.id)} key={option.id}>
+                            <div className='optionContent'>
+                                <img className='optionImg' src={option.imgSrc} alt={option.name} id={option.id} key={index} />
+                                <p className='optionName'>{option.name}</p>
                             </div>
                             {(option.id === props.activeJourno) ? <div className='selectedTick'>&#x2713;</div> : null}
                         </div>

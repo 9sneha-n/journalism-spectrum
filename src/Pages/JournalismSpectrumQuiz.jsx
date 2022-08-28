@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ImageDropdown from '../Components/ImageDropdown';
 import Spectrum from '../Components/Spectrum';
 import Legend from '../Components/Legend';
-import * as Constants from '../Constants/Constants'
+import * as Constants from '../Constants/constants'
 import './JournalismSpectrumQuiz.css';
 
 export default function JournalismSpectrumQuiz() {

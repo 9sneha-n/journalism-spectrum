@@ -28,7 +28,6 @@
 .JournoCluster {
     display: flex;
     flex-wrap: wrap;
-    text-overflow: ellipsis;
 }
 
 .rightBorder {

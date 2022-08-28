@@ -4,7 +4,7 @@ import "@fontsource/inter";
 import './JournalismSpectrumResults.css';
 import Spectrum from '../Components/Spectrum';
 import { useState, useEffect } from 'react';
-import * as Constants from '../Constants/Constants'
+import * as Constants from '../Constants/constants'
 import { useNavigate } from 'react-router-dom';
 import Legend from '../Components/Legend';
 
@@ -38,9 +38,11 @@ export default function JournalismSpectrumResults() {
 
                                         if (roundedAvgWeightX === Constants.COL_HEADERS[c_index].weight
                                             && roundedAvgWeightY === Constants.ROW_HEADERS[r_index].weight) {
-                                            return journalist;
-                                        }
+                                            return { id: journalist.id, name: journalist.name, imgSrc: journalist.imgSrc };
+                                        } else 
+                                            return null;
                                     });
+
                                 if (journosInGrid.length > 0)
                                     journosInGrid.forEach(j => {
                                         grid.push({ id: j.id, name: j.name, imgSrc: j.imgSrc });
@@ -83,7 +85,7 @@ export default function JournalismSpectrumResults() {
                             <p className='Subtitle'>{Constants.SubtitleText}</p>
                         </div>
                         <div className='HeaderImageDiv'>
-                            <img className='HeaderImg' src='./header-image'/>
+                            <img className='HeaderImg' src='./header-image' alt=''/>
                         </div>
                     </div>
                 </div>

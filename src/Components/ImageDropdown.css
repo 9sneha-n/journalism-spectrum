@@ -48,23 +48,24 @@
     overflow-y: auto;
 }
 
-.dropDownContent {
+.optionDiv {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
 }
 
-.dropDownContent:hover {
+.optionDiv:hover {
     background: #FFEEEE;
 }
 
 .selectedTick {
     color: #EC2227;
-    width :14px;
-    height :10px;
+    width: 14px;
+    height: 10px;
     margin-right: 15px;
 }
-.journoInfo {
+
+.optionContent {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -74,6 +75,44 @@
     user-select: none;
 }
 
+.optionImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 24px;
+    height: 24px;
+    border-radius: 200px;
+    font-size: 8px;
+}
+
+.optionName {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #101828;
+}
+
+@media (max-width: 1000px) {
+    .dropdownButton {
+        width: 200px;
+        font-size: 14px;
+    }
+    .droppedDiv { 
+        width: 200px;
+    }
+    .optionName {
+        font-size: 14px;
+    }
+
+    .optionImg {
+        width: 20px;
+        height: 20px;
+    }
+}
 .arrow {
     border: 1.66667px solid #667085;
     border-width: 0 1px 1px 0;
