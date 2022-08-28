@@ -8,10 +8,9 @@ export default function ImageDropdown({ ...props }) {
     const [isActive, setIsActive] = useState(false);
     const ref = useRef();
 
-    // Track events outside drop down
+    // Close drop-down on outside click
     const clickOutside = (e) => {
         if (ref.current.contains(e.target)) {
-            // inside click
             return;
         }
         // outside click
@@ -36,9 +35,14 @@ export default function ImageDropdown({ ...props }) {
     }
 
     return (
-        <div className='ImageDropdown'>
+        <div className='ImageDropdown' ref={ref}>
             <button className='dropdownButton' type="button" onClick={toggleOptions} >
-                Select Journalist
+                {props.activeJourno ?
+                    <div>
+                        Selected : <span style={{"color":"#EC2227"} }>{props.options.find(j => j.id === props.activeJourno).name}</span>
+                    </div> 
+                    : 
+                    <div>Select Journalist</div>}
                 {!isActive &&
                     <div className="arrow down" />
                 }
@@ -46,8 +50,8 @@ export default function ImageDropdown({ ...props }) {
                     <div className="arrow up" />
                 }
             </button>
-            <ul className={`${isActive ? "showDropDown" : "hideDropDown"}`} ref={ref} >
-                <div className='droppedDiv'>
+            <ul className={`${isActive ? "showDropDown" : "hideDropDown"}`}  >
+                <div className='droppedDiv' >
                     {props.options && props.options.map((option, index) => (
                         !option.placedInGrid &&
                         <div className='optionDiv' onClick={() => setSelectedJourno(option.id)} key={option.id}>
