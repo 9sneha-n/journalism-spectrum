@@ -1,33 +1,56 @@
-.JournalistDiv {
+.JournoInEdit {
     display: flex;
-    flex-direction: column;
-    margin: 5px;
-    padding: 5px;
-    box-shadow: 0 1px 1px 1px rgb(128 128 128);
     align-items: center;
-    width: 75px;
-    text-align: center;
-    font-size: 0.7rem;
-    font-weight: 600 ;
+    padding-left: 5px;
+    gap: 5px;
+    border: 1px solid #101828;
+    border-radius: 6px;
+    margin: 2px;
     user-select: none;
-    
+    max-width: 90%;
 }
 
-.JournalistImage {
-    width: 70px;
-    height: 70px;
-    cursor: -webkit-grab;
+.JournoImg {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #FFFFFF;
+    border-radius: 100px;
 }
-.JournalistImage:active {
-    cursor: -webkit-grabbing;
+
+.JournoName {
+    font-weight: 700;
+    color: #000000;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 5px;
 }
+
+.crossIcon {
+    align-self: flex-start;
+    color: #6B6E74;
+}
+
+
 
 @media (max-width: 1000px) {
-    .JournalistDiv {
-        width: 60px;
+
+    .JournoInEdit {
+        gap: 1px;
     }
-    .JournalistImage {
-        width: 55px;
-        height: 55px;
+    .JournoImg {
+        width: 25px;
+        height: 25px;
     }
+
+    .JournoName {
+        font-size: 14px;
+        line-height: 14px;
+    }
+    .crossIcon {
+        font-size: 12px;
+    }
+
 }

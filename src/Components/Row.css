@@ -1,4 +1,5 @@
 .Row {
     display: flex;
-    flex: 1 0 0;
+    height: 14.28%;
+    min-height: 100px;
 }

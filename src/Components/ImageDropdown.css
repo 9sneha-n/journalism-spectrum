@@ -1,4 +1,6 @@
-
+.ImageDropdown {
+    margin-left: 30px;
+}
 
 .showDropDown {
     display: flex;
@@ -14,22 +16,116 @@
 }
 
 .dropdownButton {
+    box-sizing: border-box;
     display: flex;
-    font-size: 0.8rem;
-    padding: 5px 5px;
-    border-radius: 3px;
-    border: 1px solid #ec2227;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 14px;
+    gap: 8px;
+    width: 320px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #EFEFF0;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    order: 0;
+    align-self: stretch;
+    justify-content: space-between;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
     cursor: pointer;
-    text-align: center;
-    outline: none;
-    background: #ec2227;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    margin: 5px;
 }
 
 .droppedDiv {
-    border: 1px solid #616160;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1), 0px 4px 6px -2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    width: 310px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.optionDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.optionDiv:hover {
+    background: #FFEEEE;
+}
+
+.selectedTick {
+    color: #EC2227;
+    width: 14px;
+    height: 10px;
+    margin-right: 15px;
+}
+
+.optionContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 14px;
+    gap: 8px;
+    height: 44px;
+    user-select: none;
+}
+
+.optionImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 24px;
+    height: 24px;
+    border-radius: 200px;
+    font-size: 8px;
+}
+
+.optionName {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #101828;
+}
+
+@media (max-width: 1000px) {
+    .dropdownButton {
+        width: 200px;
+        font-size: 14px;
+    }
+    .droppedDiv { 
+        width: 200px;
+    }
+    .optionName {
+        font-size: 14px;
+    }
+
+    .optionImg {
+        width: 20px;
+        height: 20px;
+    }
+}
+.arrow {
+    border: 1.66667px solid #667085;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 4px;
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }

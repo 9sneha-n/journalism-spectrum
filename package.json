@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://9sneha-n.github.io/journalism-spectrum",
   "dependencies": {
+    "@fontsource/inter": "^4.5.11",
+    "@fontsource/work-sans": "^4.5.10",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",

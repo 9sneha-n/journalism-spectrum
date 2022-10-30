@@ -1,0 +1,36 @@
+.Legend {
+    margin: 40px;
+}
+.LegendTitle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    color: #000000;
+}
+
+
+.LegendSubtitle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.LegentText { 
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
+letter-spacing: -0.02em;
+color: #000000;
+}
+
+.LegendHeader {
+    font-weight: 700;
+}

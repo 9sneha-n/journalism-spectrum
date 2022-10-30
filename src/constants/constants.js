@@ -54,5 +54,12 @@ export const COL_HEADERS = [
     }];
 
 export const POST_JOURNALIST_SPECTRUM_API = "http://localhost:3001/journalism_spectrum";
-
 export const RESULTS_RUOTE = "/results";
+export const MAX_JOURNO_CIRCLE_IN_GRID = 3;
+export const TitleText = "Journalism Spectrum";
+export const SubtitleText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, velit necessitatibus laborum corporis nostrum numquam voluptas repellendus temporibus aliquid, odit inventore, molestiae ex ut eius mollitia quam nesciunt! Voluptates, illum!";
+export const SubheadingText = "A sub-heading describing the page";
+export const SubheadingSubtitleText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, velit necessitatibus laborum corporis nostrum numquam voluptas repellendus temporibus aliquid, odit inventore, molestiae ex ut eius mollitia quam nesciunt! Voluptates, illum!";
+export const JournoDropDownLabel = "Choose a journalist you want to place on the grid:";
+export const xAxisLabel = "Social Spectrum Scale";
+export const yAxisLabel = "Political Scale";
