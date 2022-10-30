@@ -7,8 +7,9 @@ export default function Grid({ ...props }) {
     const showViewAll = (props.editMode === false && props.journalists.length > MAX_JOURNO_CIRCLE_IN_GRID) ? true : false;
 
     const onGridClicked = () => {
-        //Grid has been clicked, if there is an active journalist, place in grid.
-        props.updateJournalist();
+        //Grid has been clicked, if in edit-mode && if there is an active journalist, place in grid.
+        if(props.editMode)
+            props.updateJournalist();
     }
 
     const computedClassnames = props.isHeader ? 'Grid HeaderGrid' : 'Grid ' + props.rightBorder + ' ' + props.topBorder;
